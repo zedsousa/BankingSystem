@@ -52,4 +52,9 @@ public class BankAccount implements Serializable {
 	public String toString() {
 		return "Name: " + name + ", Id: " + acc_num + ", Balance: " + balance +"Type:"+this.getClass();
 	}
+
+	public String getAccNum() {
+		
+		return acc_num;
+	}
 }
