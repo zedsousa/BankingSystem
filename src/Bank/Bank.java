@@ -3,6 +3,7 @@ import java.io.Serializable;
 import javax.swing.DefaultListModel;
 import Exceptions.AccNotFound;
 import Exceptions.InvalidAmount;
+import Exceptions.InvalidOperation;
 import Exceptions.MaxBalance;
 import Exceptions.MaxWithdraw;
 
@@ -12,7 +13,8 @@ public class Bank implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private BankAccount[] accounts= new BankAccount[100];
-	public int addAccount(BankAccount acc)
+	
+	public String addAccount(BankAccount acc) throws Exception
 	{
 		int i=0;
 		for(i=0;i<100;i++)
@@ -21,24 +23,27 @@ public class Bank implements Serializable {
 			{
 				break;
 			}
+			if(i == 99) {
+				throw new InvalidOperation("Invalid Operation");
+			}
 		}
 		getAccounts()[i]=acc;
-		return i;
+		return "Conta adicionada";
 	}
 	
-	public int addAccount(String name, double balance, double maxWithLimit )
+	public String addAccount(String name, double balance, double maxWithLimit ) throws Exception
 	{
 		SavingsAccount acc=new SavingsAccount(name, balance, maxWithLimit);
 		return this.addAccount(acc);
 	}
 	
-	public int addAccount(String name, double balance, String tradeLicense) throws Exception
+	public String addAccount(String name, double balance, String tradeLicense) throws Exception
 	{
 		CurrentAccount acc = new CurrentAccount(name, balance,tradeLicense);
 		return this.addAccount(acc);
 	}
 	
-	public int addAccount(String name, String  institutionName, double balance, double min_balance)
+	public String addAccount(String name, String  institutionName, double balance, double min_balance) throws Exception
 	{
 		StudentAccount acc= new StudentAccount(name,balance,institutionName);
 		return this.addAccount(acc);
