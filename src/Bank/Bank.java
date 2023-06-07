@@ -23,7 +23,7 @@ public class Bank implements Serializable {
 			{
 				break;
 			}
-			if(i == 99) {
+			if(i == 99 && getAccounts()[i] != null) {
 				throw new InvalidOperation("Invalid Operation");
 			}
 		}
@@ -54,11 +54,7 @@ public class Bank implements Serializable {
 		int i;
 		for(i=0;i<100;i++)
 		{
-			if(getAccounts()[i]==null)
-			{
-				break;
-			}
-			if(getAccounts()[i].acc_num.equals(aacountNum))
+			if(getAccounts()[i]!=null && getAccounts()[i].acc_num.equals(aacountNum))
 			{
 				return getAccounts()[i];
 			}

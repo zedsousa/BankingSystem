@@ -58,16 +58,12 @@ public class BankTest {
     }       
     
     @Test
-    public void findAccountTest() {
+    public void findAccountTest() throws Exception {
         BankAccount bankAccount = new BankAccount("Amalia Fernandes", 1000, 500);
-        try {
-			bank.addAccount(bankAccount);
-	        String id = bankAccount.getAccNum();
-	        BankAccount findAccount = bank.findAccount(id);
-	        assertEquals(bankAccount, findAccount);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		bank.addAccount(bankAccount);
+        String id = bankAccount.getAccNum();
+        BankAccount findAccount = bank.findAccount(id);
+        assertEquals(bankAccount, findAccount);
     }       
     
     @Test
@@ -79,9 +75,11 @@ public class BankTest {
     }
     
     @Test
-    public void depositValidAmountTest() {
-    	BankAccount bankAccount = new BankAccount("Amalia Fernandes", 1500, 500);
-        assertEquals(1500, bankAccount.getbalance());
+    public void depositValidAmountTest() throws Exception {
+    	BankAccount bankAccount = new BankAccount("Tomas Neves", 1500, 500);
+    	bank.addAccount(bankAccount);
+    	bank.deposit(bankAccount.getAccNum(), 20);
+        assertEquals(1520, bankAccount.getbalance());
     }
 
     @Test
@@ -145,5 +143,11 @@ public class BankTest {
     public void displayNoAccountsTest() {
         Bank emptyBank = new Bank();
         assertTrue(emptyBank.display().isEmpty());
+    }
+    
+    @Test
+    public void setAccountsTest() {
+    	BankAccount[] accounts= new BankAccount[100];
+    	bank.setAccounts(accounts);
     }
 }
