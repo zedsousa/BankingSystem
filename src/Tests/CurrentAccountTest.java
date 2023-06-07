@@ -25,7 +25,7 @@ class CurrentAccountTest {
 		
 		CurrentAccount c = new CurrentAccount("test",5000,"adwad");
 		assertEquals(5000, c.getbalance() );
-	}
+	};
 	
 	@Test
 	public void BalanceBigger () throws Exception {
