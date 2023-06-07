@@ -39,7 +39,7 @@ public class BankAccount implements Serializable {
 		
 		else
 		{
-			throw new MaxBalance("Insufficient Balance");
+			throw new MaxWithdraw("Insufficient Balance");
 		}
 	}
 	

@@ -34,7 +34,7 @@ public class BankAccountTest {
 
     @Test
     public void testWithdrawInsufficientBalance() {
-        assertThrows(MaxBalance.class, () -> bankAccount.withdraw(2000));
+        assertThrows(MaxWithdraw.class, () -> bankAccount.withdraw(2000));
     }
 
     @Test
@@ -44,7 +44,7 @@ public class BankAccountTest {
 
     @Test
     public void testToString() {
-        String expected = "Name: John Doe, Id: " + bankAccount.getAccNum() + ", Balance: 1000.0, Type: class Bank.BankAccount";
+        String expected = "Name: John Doe, Id: " + bankAccount.getAccNum() + ", Balance: 1000.0Type:class Bank.BankAccount";
         assertEquals(expected, bankAccount.toString());
     }
 }
