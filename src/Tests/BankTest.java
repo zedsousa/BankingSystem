@@ -81,6 +81,14 @@ public class BankTest {
     	bank.deposit(bankAccount.getAccNum(), 20);
         assertEquals(1520, bankAccount.getbalance());
     }
+    
+    @Test
+    public void depositValidAmountMutantTest() throws Exception {
+        BankAccount bankAccount = new BankAccount("Tomas Neves", 1500, 500);
+        bank.addAccount(bankAccount);
+        bank.deposit(bankAccount.getAccNum(), 0);
+        assertEquals(1500, bankAccount.getbalance());
+    }
 
     @Test
     public void depositNegativeAmountTest() throws Exception {
